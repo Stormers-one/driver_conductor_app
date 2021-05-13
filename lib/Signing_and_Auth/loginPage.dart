@@ -33,10 +33,10 @@ class _LoginState extends State<LoginPage> {
           builder: (context) => AlertDialog(
                 title: Text("Do You Really want to Exit?"),
                 actions: <Widget>[
-                  FlatButton(
+                  TextButton(
                       onPressed: () => Navigator.pop(context, false),
                       child: Text("NO")),
-                  FlatButton(
+                  TextButton(
                       onPressed: () => Navigator.pop(context, exit(0)),
                       child: Text("YES")),
                 ],

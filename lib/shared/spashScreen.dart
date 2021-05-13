@@ -1,6 +1,6 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
-import 'package:o_k/Wrapper.dart';
+import 'package:driver_conductor_app/Wrapper.dart';
 
 class SplashScreen extends StatefulWidget {
   @override
@@ -11,14 +11,17 @@ class _SplashScreenState extends State<SplashScreen> {
   @override
   void initState() {
     super.initState();
-    Timer(Duration(seconds: 3), () => Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => Wrapper())));
+    Timer(
+        Duration(seconds: 3),
+        () => Navigator.pushReplacement(
+            context, MaterialPageRoute(builder: (context) => Wrapper())));
   }
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-        theme: ThemeData(fontFamily: 'Quicksand-Medium'),
-        home: Scaffold(
+      theme: ThemeData(fontFamily: 'Quicksand-Medium'),
+      home: Scaffold(
         body: Stack(
           fit: StackFit.expand,
           children: <Widget>[
@@ -38,17 +41,15 @@ class _SplashScreenState extends State<SplashScreen> {
                           padding: EdgeInsets.only(top: 30.0),
                         ),
                         CircleAvatar(
-                          backgroundColor: Colors.white,
-                          radius: 100.0,
-                          child:Padding(
-                            padding: EdgeInsets.only(top:20),
-                            child: SizedBox(
-                            height: 180,
-                            width: 180,
-                            child:Image.asset('assets/images/logo.png')
-                            ),
-                          )
-                        ),
+                            backgroundColor: Colors.white,
+                            radius: 100.0,
+                            child: Padding(
+                              padding: EdgeInsets.only(top: 20),
+                              child: SizedBox(
+                                  height: 180,
+                                  width: 180,
+                                  child: Image.asset('assets/images/logo.png')),
+                            )),
                         Padding(
                           padding: EdgeInsets.only(top: 10.0),
                         ),
@@ -73,7 +74,7 @@ class _SplashScreenState extends State<SplashScreen> {
                         padding: EdgeInsets.only(top: 20.0),
                       ),
                       Text(
-                       'Travel Made Easy',
+                        'Travel Made Easy',
                         softWrap: true,
                         textAlign: TextAlign.center,
                         style: TextStyle(
