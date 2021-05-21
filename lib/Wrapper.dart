@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:driver_conductor_app/Signing_and_Auth/loginPage.dart';
+import 'package:driver_conductor_app/shared/services/firebaseServices/Signing_and_Auth/loginPage.dart';
 import 'package:driver_conductor_app/shared/constants.dart';
 import 'package:provider/provider.dart';
 import 'package:driver_conductor_app/homepage.dart';

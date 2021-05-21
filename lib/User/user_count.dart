@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:driver_conductor_app/User/profile_settings.dart';
-import 'package:driver_conductor_app/services/database.dart';
+import 'package:driver_conductor_app/Shared/services/firebaseServices/database.dart';
 import 'package:driver_conductor_app/User/user_list.dart';
 import 'package:driver_conductor_app/User/users_fetch.dart';
 import 'package:driver_conductor_app/shared/drawer.dart';
-import 'package:driver_conductor_app/shared/colors.dart';
+import 'package:driver_conductor_app/shared/Styling/colors.dart';
 import 'package:provider/provider.dart';
 
 class UsersCount extends StatelessWidget {
@@ -21,6 +20,7 @@ class UsersCount extends StatelessWidget {
     //       });
     // }
     return StreamProvider<List<Users>>.value(
+      initialData: [],
       value: DatabaseService().users,
       child: MaterialApp(
         title: 'Homepage',

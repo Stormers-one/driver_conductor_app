@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
-import 'package:driver_conductor_app/shared/colors.dart';
+import 'package:driver_conductor_app/shared/Styling/colors.dart';
 
 class Loading extends StatelessWidget {
   @override

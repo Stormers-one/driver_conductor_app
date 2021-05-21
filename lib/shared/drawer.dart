@@ -1,18 +1,11 @@
-import 'package:flutter/material.dart';
-import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
-// import 'package:driver_conductor_app/Menu/Booking/bookings_list.dart';
-import 'package:driver_conductor_app/Menu/help.dart';
-import 'package:driver_conductor_app/Menu/reports.dart';
 import 'package:driver_conductor_app/User/profile.dart';
 import 'package:driver_conductor_app/homepage.dart';
-import 'package:driver_conductor_app/driver/map.dart';
 import 'package:driver_conductor_app/shared/loading.dart';
+import 'package:flutter/material.dart';
+import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
+import 'package:driver_conductor_app/Menu/help.dart';
 import 'constants.dart';
-import 'package:driver_conductor_app/homepage.dart';
-import 'package:driver_conductor_app/shared/underDevelopment.dart';
-import 'package:driver_conductor_app/shared/colors.dart';
-import 'package:driver_conductor_app/homepage.dart';
-import 'package:driver_conductor_app/User/user_count.dart';
+import 'package:driver_conductor_app/shared/Styling/colors.dart';
 
 class DrawerBuild extends StatefulWidget {
   _DrawerBuild createState() => _DrawerBuild();
@@ -82,12 +75,12 @@ class _DrawerBuild extends State<DrawerBuild> {
                 Loading();
               });
               await getim();
-              setState(() {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => Profile()),
-                );
-              });
+              // setState(() {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => Profile()),
+              );
+              // });
             },
           ),
           // ListTile(
@@ -100,43 +93,6 @@ class _DrawerBuild extends State<DrawerBuild> {
           //     );
           //   },
           // ),
-          // ListTile(
-          //   leading: Icon(Icons.report),
-          //   title: Text('Report',style: TextStyle(fontFamily: 'Quicksand-Bold',)),
-          //   onTap: () {
-          //     Navigator.push(
-          //       context,
-          //       MaterialPageRoute(builder: (context) => Reports()),
-          //     );
-          //   },
-          // ),
-          ListTile(
-            leading: Icon(Icons.help),
-            title: Text('Help',
-                style: TextStyle(
-                  fontFamily: 'Quicksand-Bold',
-                )),
-            onTap: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(builder: (context) => Help()),
-              );
-            },
-          ),
-
-          ListTile(
-            leading: Icon(Icons.help),
-            title: Text('Driver App - Map',
-                style: TextStyle(
-                  fontFamily: 'Quicksand-Bold',
-                )),
-            onTap: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(builder: (context) => DriverMap()),
-              );
-            },
-          ),
         ],
       ),
     );

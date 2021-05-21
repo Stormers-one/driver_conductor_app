@@ -1,14 +1,15 @@
 import 'dart:io';
 
-import 'package:firebase_storage/firebase_storage.dart';
+import 'package:firebase_storage/firebase_storage.dart' as firebase_storage;
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:image_picker/image_picker.dart';
-import 'package:driver_conductor_app/services/database.dart';
+import 'package:driver_conductor_app/Shared/services/firebaseServices/database.dart';
+import 'package:driver_conductor_app/shared/Styling/buttonStyles.dart';
 import 'package:driver_conductor_app/shared/loading.dart';
 import 'package:provider/provider.dart';
 import 'package:driver_conductor_app/shared/model/user.dart';
-import 'package:driver_conductor_app/shared/colors.dart';
+import 'package:driver_conductor_app/shared/Styling/colors.dart';
 import 'package:driver_conductor_app/shared/constants.dart';
 
 class SettingsForm extends StatefulWidget {
@@ -22,14 +23,18 @@ class _SettingsFormState extends State<SettingsForm> {
   String currentName;
   String currentphno;
 
-  File _image;
+  PickedFile _image;
   Future uploadPicture(BuildContext context) async {
     //File m = await getImageFileFromAssets('images/profile-icon.png');
-    StorageReference firebaseStorageref =
-        FirebaseStorage.instance.ref().child('profile_image/$userID');
+    firebase_storage.Reference firebaseStorageref = firebase_storage
+        .FirebaseStorage.instance
+        .ref()
+        .child('profile_image/$userID');
     try {
-      StorageUploadTask uploadTask = firebaseStorageref.putFile(_image);
-      StorageTaskSnapshot taskSnapshot = await uploadTask.onComplete;
+      firebase_storage.UploadTask uploadTask =
+          firebaseStorageref.putFile(File(_image.path));
+      firebase_storage.TaskSnapshot taskSnapshot =
+          await uploadTask.whenComplete(() => null);
       Fluttertoast.showToast(msg: 'Profile Picture Uploaded');
     } catch (e) {
       Fluttertoast.showToast(msg: 'Cancelled');
@@ -38,8 +43,9 @@ class _SettingsFormState extends State<SettingsForm> {
 
   @override
   Widget build(BuildContext context) {
+    final imagePicker = new ImagePicker();
     Future getImage() async {
-      var image = await ImagePicker.pickImage(source: ImageSource.gallery);
+      var image = await imagePicker.getImage(source: ImageSource.gallery);
       setState(() {
         _image = image;
         print("Image Path $_image");
@@ -109,25 +115,19 @@ class _SettingsFormState extends State<SettingsForm> {
                       padding: const EdgeInsets.only(top: 20.0),
                     ),
                     SizedBox(
-                      height: 50,
-                      width: 100,
-                      child: RaisedButton(
+                      height: 80,
+                      width: 150,
+                      child: ElevatedButton(
                           child: const Text(
-                            'Upload Profile Photo',
+                            'Select image file to upload',
                             style: TextStyle(
                               fontSize: 12,
                               fontFamily: 'Quicksand-Bold',
                             ),
                             textAlign: TextAlign.center,
+                            overflow: TextOverflow.clip,
                           ),
-                          color: red,
-                          textColor: Colors.white,
-                          splashColor: red,
-                          padding: EdgeInsets.fromLTRB(10, 10, 10, 10),
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(20.0),
-                            side: BorderSide(color: Colors.transparent),
-                          ),
+                          style: raisedButtonStyle,
                           onPressed: () async {
                             Fluttertoast.showToast(
                                 msg: 'Wait For Upload Status');
@@ -141,20 +141,13 @@ class _SettingsFormState extends State<SettingsForm> {
                     SizedBox(
                       height: 50,
                       width: 200,
-                      child: RaisedButton(
+                      child: ElevatedButton(
                           child: const Text('Update',
                               style: TextStyle(
                                 fontSize: 20,
                                 fontFamily: 'Quicksand-Bold',
                               )),
-                          color: red,
-                          textColor: Colors.white,
-                          splashColor: red,
-                          padding: EdgeInsets.fromLTRB(10, 10, 10, 10),
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(20.0),
-                            side: BorderSide(color: Colors.transparent),
-                          ),
+                          style: raisedButtonStyle,
                           onPressed: () async {
                             if (_formkey.currentState.validate()) {
                               await DatabaseService(uid: user.uid)

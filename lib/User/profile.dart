@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:driver_conductor_app/User/profile_settings.dart';
 import 'package:driver_conductor_app/shared/model/user.dart';
-import 'package:driver_conductor_app/services/database.dart';
+import 'package:driver_conductor_app/Shared/services/firebaseServices/database.dart';
 import 'package:driver_conductor_app/shared/constants.dart';
 import 'package:driver_conductor_app/shared/drawer.dart';
 import 'package:driver_conductor_app/shared/loading.dart';
 import 'package:provider/provider.dart';
-import 'package:driver_conductor_app/shared/colors.dart';
+import 'package:driver_conductor_app/shared/Styling/colors.dart';
 
 class Profile extends StatefulWidget {
   _ProfileState createState() => _ProfileState();
@@ -17,13 +17,14 @@ class _ProfileState extends State<Profile> {
   Widget build(BuildContext context) {
     void _showSettengsPanel() {
       showModalBottomSheet(
-          context: context,
-          builder: (context) {
-            return Container(
-              padding: EdgeInsets.symmetric(vertical: 20.0, horizontal: 60.0),
-              child: SettingsForm(),
-            );
-          });
+        context: context,
+        builder: (context) {
+          return Container(
+            padding: EdgeInsets.symmetric(vertical: 20.0, horizontal: 60.0),
+            child: SettingsForm(),
+          );
+        },
+      );
     }
 
     final user = Provider.of<User>(context);
@@ -36,7 +37,7 @@ class _ProfileState extends State<Profile> {
             title: Text('Profile'),
             backgroundColor: red,
             actions: <Widget>[
-              FlatButton.icon(
+              TextButton.icon(
                   onPressed: () => _showSettengsPanel(),
                   icon: Icon(Icons.settings),
                   label: Text('Edit Profile'))
@@ -68,7 +69,7 @@ class _ProfileState extends State<Profile> {
                                   fadeInCurve: Curves.bounceIn,
                                   placeholder: 'assets/images/loading.gif',
                                   image: downURL,
-                                  fit: BoxFit.fill,
+                                  fit: BoxFit.cover,
                                 ),
                               ),
                             ),

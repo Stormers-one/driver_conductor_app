@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:driver_conductor_app/shared/colors.dart';
+import 'package:driver_conductor_app/shared/styling/colors.dart';
 import 'package:driver_conductor_app/shared/drawer.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:driver_conductor_app/shared/constants.dart';

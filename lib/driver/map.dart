@@ -3,7 +3,7 @@
 // northeast: LatLng(11.879561, 77.688881),
 
 import 'package:flutter/material.dart';
-import 'package:driver_conductor_app/shared/colors.dart';
+import 'package:driver_conductor_app/shared/styling/colors.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:geolocator/geolocator.dart';
 import '../shared/constants.dart';
@@ -12,7 +12,7 @@ import 'package:provider/provider.dart';
 // import 'package:flutter_polyline_points/flutter_polyline_points.dart';
 // import '../Maps/distance.java';
 // import 'googlemapservice.dart';
-import 'drive_state.dart';
+import '../shared/services/mapServices/mapState.dart';
 
 class DriverMap extends StatefulWidget {
   @override
@@ -51,8 +51,8 @@ class _DriverMap extends State<DriverMap> {
   }
 
   getUserLocation() async {
-    currentLocation = await Geolocator()
-        .getCurrentPosition(desiredAccuracy: LocationAccuracy.high);
+    currentLocation = await Geolocator.getCurrentPosition(
+        desiredAccuracy: LocationAccuracy.high);
     setState(() {
       _center = LatLng(currentLocation.latitude, currentLocation.longitude);
 
@@ -64,7 +64,7 @@ class _DriverMap extends State<DriverMap> {
   void calcDistanceBetweenMarkers() {}
 
   Widget build(BuildContext context) {
-    final driveState = Provider.of<DriveState>(context);
+    final driveState = Provider.of<MapState>(context);
     return MaterialApp(
       theme: ThemeData(fontFamily: 'Quicksand-Medium'),
       home: driveState.initialPosition == null

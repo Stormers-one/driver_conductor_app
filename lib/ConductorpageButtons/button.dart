@@ -3,12 +3,11 @@ import 'package:flutter/material.dart';
 import 'package:driver_conductor_app/Menu/help.dart';
 import 'package:driver_conductor_app/User/user_count.dart';
 import 'package:driver_conductor_app/User/user_list.dart';
-import 'package:driver_conductor_app/conductor/Emergency.dart';
-import 'package:driver_conductor_app/conductor/Passenger.dart';
-import 'package:driver_conductor_app/conductor/QR_Scan.dart';
-import 'package:driver_conductor_app/shared/underDevelopment.dart';
+import 'package:driver_conductor_app/Menu/Emergency.dart';
+import 'package:driver_conductor_app/Menu/Passenger.dart';
+import 'package:driver_conductor_app/Menu/QR_Scan.dart';
 // import '../homepageButtons/buttonClass.dart';
-import '../shared/colors.dart';
+import '../shared/styling/colors.dart';
 // import '../homepageButtons/data.dart';
 
 class Button extends StatelessWidget {
@@ -67,7 +66,7 @@ class Button extends StatelessWidget {
     if (route == 'QR_Scan') {
       Navigator.push(
         context,
-        MaterialPageRoute(builder: (context) => Box()),
+        MaterialPageRoute(builder: (context) => QR_Scan()),
       );
     } else if (route == 'Emergency') {
       Navigator.push(

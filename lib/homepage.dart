@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 // import 'package:o_k/shared/bottomBar.dart';
-import 'package:driver_conductor_app/shared/colors.dart';
+import 'package:driver_conductor_app/shared/styling/colors.dart';
 import 'package:driver_conductor_app/shared/drawer.dart';
 import './ConductorpageButtons/data.dart';
 import './ConductorpageButtons/button.dart';
