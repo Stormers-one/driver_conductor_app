@@ -533,7 +533,7 @@ packages:
       name: qrscan
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "0.2.22"
+    version: "0.3.1"
   quiver:
     dependency: "direct main"
     description:

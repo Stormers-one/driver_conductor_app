@@ -1,3 +1,4 @@
+import 'package:driver_conductor_app/shared/model/user.dart';
 import 'package:flutter/material.dart';
 import 'package:driver_conductor_app/Shared/services/firebaseServices/database.dart';
 import 'package:driver_conductor_app/User/user_list.dart';
@@ -19,9 +20,10 @@ class UsersCount extends StatelessWidget {
     //         );
     //       });
     // }
+    final userID = Provider.of<User>(context);
     return StreamProvider<List<Users>>.value(
       initialData: [],
-      value: DatabaseService().users,
+      value: DatabaseService(uid: userID.uid!).users,
       child: MaterialApp(
         title: 'Homepage',
         home: Scaffold(
