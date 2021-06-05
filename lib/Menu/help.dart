@@ -12,10 +12,10 @@ List<String> devs = [
   'Smitha John',
   'Kennith Philips'
 ];
-Color factColor = Colors.orange[200];
+Color factColor = Colors.orange.shade200;
 Color factBoxColor = bgOrange;
 Color helpBoxColor = bgOrange;
-Color helpColor = Colors.orange[200];
+Color helpColor = Colors.orange.shade200;
 
 var _reportType = "";
 var selectedReport = "";
@@ -85,8 +85,8 @@ class Help extends StatelessWidget {
                                       .toList(),
                                   isExpanded: true,
                                   onChanged: (val) => (() {
-                                    _reportType = val;
-                                    selectedReport = val;
+                                    _reportType = val.toString();
+                                    selectedReport = val.toString();
                                     FocusScope.of(context)
                                         .requestFocus(FocusNode());
                                   }),

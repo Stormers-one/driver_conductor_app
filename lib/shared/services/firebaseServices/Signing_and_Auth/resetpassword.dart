@@ -8,9 +8,6 @@ import 'package:driver_conductor_app/shared/loading.dart';
 import 'package:driver_conductor_app/shared/Styling/colors.dart';
 
 class ResetPage extends StatefulWidget {
-  final Function toggleView;
-  ResetPage({this.toggleView});
-
   @override
   _ResetState createState() => _ResetState();
 }
@@ -71,8 +68,8 @@ class _ResetState extends State<ResetPage> {
                                       ),
                                       gradient: new LinearGradient(
                                           colors: [
-                                            Colors.orange[600],
-                                            Colors.red[300]
+                                            Colors.orange.shade600,
+                                            Colors.red.shade300
                                           ],
                                           begin:
                                               const FractionalOffset(0.5, 0.0),
@@ -116,7 +113,7 @@ class _ResetState extends State<ResetPage> {
                                             setState(() => email = val);
                                           },
                                           validator: (val) =>
-                                              val.isEmpty && clickStatLogin
+                                              val!.isEmpty && clickStatLogin
                                                   ? 'Enter an Email'
                                                   : null,
                                         ),
@@ -129,7 +126,7 @@ class _ResetState extends State<ResetPage> {
                                           width: 200,
                                           child: ElevatedButton(
                                             onPressed: () async {
-                                              if (_formkey.currentState
+                                              if (_formkey.currentState!
                                                   .validate()) {
                                                 setState(() => loading = true);
                                                 dynamic result = await _auth

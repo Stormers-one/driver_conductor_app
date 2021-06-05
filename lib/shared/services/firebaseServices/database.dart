@@ -9,7 +9,7 @@ FirebaseFirestore firestore = FirebaseFirestore.instance;
 
 class DatabaseService {
   final String uid;
-  DatabaseService({this.uid});
+  DatabaseService({required this.uid});
 //collection reference
   final CollectionReference userCollecation =
       FirebaseFirestore.instance.collection('Users');
@@ -107,13 +107,13 @@ class DatabaseService {
     return snapshot.docs.map((doc) {
       return TicketData(
         bookid: doc['Booking ID'] ?? '',
-        booktime: doc['Booking Time'].toString() ?? '',
-        bookfare: doc['fare'].toString() ?? '',
-        bookfrom: doc['From'] ?? '',
-        bookto: doc['To'] ?? '',
-        bookphno: doc['Phone Number'] ?? '',
-        bookuid: doc['UID'] ?? '',
-        bookbustype: doc['Bus Type'] ?? '',
+        booktime: doc['Booking Time'].toString(),
+        bookfare: doc['fare'].toString(),
+        bookfrom: doc['From'],
+        bookto: doc['To'],
+        bookphno: doc['Phone Number'],
+        bookuid: doc['UID'],
+        bookbustype: doc['Bus Type'],
       );
     }).toList();
   }

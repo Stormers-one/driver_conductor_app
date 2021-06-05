@@ -13,7 +13,7 @@ class Homepage extends StatefulWidget {
 }
 
 class _HomepageState extends State<Homepage> {
-  final buttonHome = Buttons.fetchAll() ?? [];
+  final buttonHome = Buttons.fetchAll();
   @override
   Widget build(BuildContext context) {
     return MaterialApp(

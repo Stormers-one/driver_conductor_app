@@ -6,12 +6,12 @@ import 'googlemapservice.dart';
 import 'package:geocoding/geocoding.dart';
 
 class MapState with ChangeNotifier {
-  static LatLng _initialPosition;
-  LatLng _lastPosition = _initialPosition;
+  static LatLng? _initialPosition;
+  LatLng? _lastPosition = _initialPosition;
   bool locationServiceActive = true;
   final Set<Marker> _markers = {};
   final Set<Polyline> _polyLines = {};
-  GoogleMapController _mapController;
+  GoogleMapController? _mapController;
   GoogleMapsServices _googleMapsServices = GoogleMapsServices();
 
 // Map access Split START
@@ -21,23 +21,23 @@ class MapState with ChangeNotifier {
 // Map access Split END
 
 // Distance START
-  static String _distance;
-  static String _duration;
-  static List<String> _gmapData;
-  List<String> get gmapData => _gmapData;
-  String get distance => _distance;
-  String get duration => _duration;
-  double _dist;
-  static Color _indicatorColor;
-  Color get indicatorColor => _indicatorColor;
+  static String? _distance;
+  static String? _duration;
+  static List<String>? _gmapData;
+  List<String> get gmapData => _gmapData!;
+  String get distance => _distance!;
+  String get duration => _duration!;
+  double? _dist;
+  static Color? _indicatorColor;
+  Color get indicatorColor => _indicatorColor!;
 // Distance END
 
   TextEditingController locationController = TextEditingController();
   TextEditingController destinationController = TextEditingController();
-  LatLng get initialPosition => _initialPosition;
-  LatLng get lastPosition => _lastPosition;
+  LatLng get initialPosition => _initialPosition!;
+  LatLng get lastPosition => _lastPosition!;
   GoogleMapsServices get googleMapsServices => _googleMapsServices;
-  GoogleMapController get mapController => _mapController;
+  GoogleMapController get mapController => _mapController!;
   Set<Marker> get markers => _markers;
   Set<Polyline> get polyLines => _polyLines;
 
@@ -57,18 +57,18 @@ class MapState with ChangeNotifier {
     createRoute(route);
     _gmapData =
         await _googleMapsServices.getTravelInfo(fromLocation, toLocation);
-    _distance = _gmapData[0];
+    _distance = _gmapData![0];
 
-    _dist = double.parse(_distance.substring(0, _distance.length - 2));
-    if (_dist < 1.2) {
+    _dist = double.parse(_distance!.substring(0, _distance!.length - 2));
+    if (_dist! < 1.2) {
       _indicatorColor = Color(0xFFFF0000);
-    } else if (_dist >= 1.2 && _dist < 2.8) {
+    } else if (_dist! >= 1.2 && _dist! < 2.8) {
       _indicatorColor = Color(0xFF00ff00);
     } else {
       _indicatorColor = Color(0xFFFFFF00);
     }
 
-    _duration = _gmapData[1];
+    _duration = _gmapData![1];
     _initialPosition = bus1;
     notifyListeners();
   }

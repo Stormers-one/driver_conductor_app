@@ -4,10 +4,10 @@ import 'package:driver_conductor_app/shared/drawer.dart';
 import 'package:driver_conductor_app/shared/constants.dart';
 import 'package:driver_conductor_app/shared/styling/colors.dart';
 
-Color factColor = Colors.orange[200];
+Color factColor = Colors.orange.shade200;
 Color factBoxColor = bgOrange;
 Color helpBoxColor = bgOrange;
-Color helpColor = Colors.orange[200];
+Color helpColor = Colors.orange.shade200;
 
 var loading = false;
 
@@ -73,8 +73,8 @@ class Emergency extends StatelessWidget {
                                     .toList(),
                                 isExpanded: true,
                                 onChanged: (val) => (() {
-                                  _reportType = val;
-                                  selectedReport = val;
+                                  _reportType = val.toString();
+                                  selectedReport = val.toString();
                                   FocusScope.of(context)
                                       .requestFocus(FocusNode());
                                 }),

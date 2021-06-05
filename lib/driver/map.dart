@@ -20,18 +20,18 @@ class DriverMap extends StatefulWidget {
 }
 
 class _DriverMap extends State<DriverMap> {
-  GoogleMapController mapController;
-  LatLng _center;
+  GoogleMapController? mapController;
+  LatLng? _center;
   var bus1 = LatLng(10.014483, 76.334346);
   var bus2 = LatLng(10.005190, 76.313787);
-  Position currentLocation;
-  CameraPosition _position;
+  Position? currentLocation;
+  CameraPosition? _position;
 
   bool loading = true;
 
-  TextEditingController _controllerFrom;
-  TextEditingController _controllerTo;
-  TextEditingController stateController;
+  TextEditingController? _controllerFrom;
+  TextEditingController? _controllerTo;
+  TextEditingController? stateController;
 
   @override
   void initState() {
@@ -54,7 +54,7 @@ class _DriverMap extends State<DriverMap> {
     currentLocation = await Geolocator.getCurrentPosition(
         desiredAccuracy: LocationAccuracy.high);
     setState(() {
-      _center = LatLng(currentLocation.latitude, currentLocation.longitude);
+      _center = LatLng(currentLocation!.latitude, currentLocation!.longitude);
 
       loading = false;
     });

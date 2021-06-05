@@ -1,10 +1,7 @@
 import 'package:flutter/material.dart';
 
-import 'package:driver_conductor_app/Menu/help.dart';
 import 'package:driver_conductor_app/User/user_count.dart';
-import 'package:driver_conductor_app/User/user_list.dart';
 import 'package:driver_conductor_app/Menu/Emergency.dart';
-import 'package:driver_conductor_app/Menu/Passenger.dart';
 import 'package:driver_conductor_app/Menu/QR_Scan.dart';
 // import '../homepageButtons/buttonClass.dart';
 import '../shared/styling/colors.dart';
@@ -16,7 +13,11 @@ class Button extends StatelessWidget {
   final String text;
   final BuildContext context;
   final int index = 0;
-  Button({this.image, this.route, this.text, this.context});
+  Button(
+      {required this.image,
+      required this.route,
+      required this.text,
+      required this.context});
   // @override
   Widget build(BuildContext context) {
     return Column(

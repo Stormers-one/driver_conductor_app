@@ -15,9 +15,6 @@ import 'package:driver_conductor_app/shared/Styling/colors.dart';
 final FirebaseAuth _auth = FirebaseAuth.instance;
 
 class LoginPage extends StatefulWidget {
-  final Function toggleView;
-  LoginPage({this.toggleView});
-
   @override
   _LoginState createState() => _LoginState();
 }
@@ -31,7 +28,7 @@ class _LoginState extends State<LoginPage> {
   String password = "";
   String error = "";
 
-  User user;
+  User? user;
   void initState() {
     super.initState();
   }
@@ -51,7 +48,7 @@ class _LoginState extends State<LoginPage> {
                       onPressed: () => Navigator.pop(context, exit(0)),
                       child: Text("YES")),
                 ],
-              ));
+              )).then((value) => value ?? false);
     }
 
     return loading
@@ -111,8 +108,8 @@ class _LoginState extends State<LoginPage> {
                                           ),
                                           gradient: new LinearGradient(
                                               colors: [
-                                                Colors.orange[600],
-                                                Colors.red[300]
+                                                Colors.orange.shade600,
+                                                Colors.red.shade300
                                               ],
                                               begin: const FractionalOffset(
                                                   0.5, 0.0),
@@ -159,7 +156,7 @@ class _LoginState extends State<LoginPage> {
                                                 setState(() => email = val);
                                               },
                                               validator: (val) =>
-                                                  val.isEmpty && clickStatLogin
+                                                  val!.isEmpty && clickStatLogin
                                                       ? 'Enter an Email'
                                                       : null,
                                             ),
@@ -178,7 +175,7 @@ class _LoginState extends State<LoginPage> {
                                                 setState(() => password = val);
                                               },
                                               validator: (val) =>
-                                                  val.isEmpty && clickStatLogin
+                                                  val!.isEmpty && clickStatLogin
                                                       ? 'Enter password'
                                                       : null,
                                             ),
@@ -191,7 +188,7 @@ class _LoginState extends State<LoginPage> {
                                               width: 200,
                                               child: ElevatedButton(
                                                 onPressed: () async {
-                                                  if (_formkey.currentState
+                                                  if (_formkey.currentState!
                                                       .validate()) {
                                                     setState(
                                                         () => loading = true);
