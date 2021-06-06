@@ -67,7 +67,7 @@ class Button extends StatelessWidget {
     if (route == 'QR_Scan') {
       Navigator.push(
         context,
-        MaterialPageRoute(builder: (context) => QR_Scan()),
+        MaterialPageRoute(builder: (context) => QRScan()),
       );
     } else if (route == 'Emergency') {
       Navigator.push(

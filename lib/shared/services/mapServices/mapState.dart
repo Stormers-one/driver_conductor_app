@@ -3,7 +3,6 @@ import 'package:flutter/widgets.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:driver_conductor_app/shared/Styling/colors.dart';
 import 'googlemapservice.dart';
-import 'package:geocoding/geocoding.dart';
 
 class MapState with ChangeNotifier {
   static LatLng? _initialPosition;
@@ -34,7 +33,7 @@ class MapState with ChangeNotifier {
 
   TextEditingController locationController = TextEditingController();
   TextEditingController destinationController = TextEditingController();
-  LatLng get initialPosition => _initialPosition!;
+  LatLng? get initialPosition => _initialPosition;
   LatLng get lastPosition => _lastPosition!;
   GoogleMapsServices get googleMapsServices => _googleMapsServices;
   GoogleMapController get mapController => _mapController!;
@@ -58,6 +57,9 @@ class MapState with ChangeNotifier {
     _gmapData =
         await _googleMapsServices.getTravelInfo(fromLocation, toLocation);
     _distance = _gmapData![0];
+
+    _addMarker(fromLocation, 'fromLocation');
+    _addMarker(toLocation, 'toLocation');
 
     _dist = double.parse(_distance!.substring(0, _distance!.length - 2));
     if (_dist! < 1.2) {

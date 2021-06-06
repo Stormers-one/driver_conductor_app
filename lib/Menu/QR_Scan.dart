@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:driver_conductor_app/shared/drawer.dart';
 import 'package:driver_conductor_app/shared/styling/colors.dart';
-import 'package:qrscan/qrscan.dart' as scanner;
+// import 'package:qrscan/qrscan.dart' as scanner;
 
-class QR_Scan extends StatelessWidget {
+class QRScan extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(

@@ -12,7 +12,7 @@ import 'package:driver_conductor_app/shared/constants.dart';
 import 'package:driver_conductor_app/shared/loading.dart';
 import 'package:driver_conductor_app/shared/Styling/colors.dart';
 
-final FirebaseAuth _auth = FirebaseAuth.instance;
+// final FirebaseAuth _auth = FirebaseAuth.instance;
 
 class LoginPage extends StatefulWidget {
   @override

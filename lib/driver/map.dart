@@ -6,7 +6,6 @@ import 'package:flutter/material.dart';
 import 'package:driver_conductor_app/shared/styling/colors.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:geolocator/geolocator.dart';
-import '../shared/constants.dart';
 import '../shared/loading.dart';
 import 'package:provider/provider.dart';
 // import 'package:flutter_polyline_points/flutter_polyline_points.dart';
@@ -25,7 +24,6 @@ class _DriverMap extends State<DriverMap> {
   var bus1 = LatLng(10.014483, 76.334346);
   var bus2 = LatLng(10.005190, 76.313787);
   Position? currentLocation;
-  CameraPosition? _position;
 
   bool loading = true;
 

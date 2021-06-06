@@ -1,3 +1,4 @@
+import 'package:driver_conductor_app/shared/Styling/buttonStyles.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:driver_conductor_app/shared/drawer.dart';
@@ -89,22 +90,16 @@ class Emergency extends StatelessWidget {
                         SizedBox(
                           height: 50,
                           width: 200,
-                          child: RaisedButton(
+                          child: ElevatedButton(
                             onPressed: () async {
                               loading = true;
                               Fluttertoast.showToast(msg: "Report Sent!");
                               loading = false;
                             },
                             child: const Text('Proceed',
-                                style: TextStyle(fontSize: 20)),
-                            color: red,
-                            textColor: Colors.white,
-                            splashColor: Colors.grey,
-                            padding: EdgeInsets.fromLTRB(10, 10, 10, 10),
-                            shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(20.0),
-                              side: BorderSide(color: Colors.transparent),
-                            ),
+                                style: TextStyle(
+                                    fontSize: 20, color: Colors.white)),
+                            style: raisedButtonStyle,
                           ),
                         ),
                       ],

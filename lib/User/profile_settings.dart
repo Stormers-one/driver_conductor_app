@@ -9,7 +9,6 @@ import 'package:driver_conductor_app/shared/Styling/buttonStyles.dart';
 import 'package:driver_conductor_app/shared/loading.dart';
 import 'package:provider/provider.dart';
 import 'package:driver_conductor_app/shared/model/user.dart';
-import 'package:driver_conductor_app/shared/Styling/colors.dart';
 import 'package:driver_conductor_app/shared/constants.dart';
 
 class SettingsForm extends StatefulWidget {
@@ -33,8 +32,8 @@ class _SettingsFormState extends State<SettingsForm> {
     try {
       firebase_storage.UploadTask uploadTask =
           firebaseStorageref.putFile(File(_image!.path));
-      firebase_storage.TaskSnapshot taskSnapshot =
-          await uploadTask.whenComplete(() => null);
+      // firebase_storage.TaskSnapshot taskSnapshot =
+      await uploadTask.whenComplete(() => null);
       Fluttertoast.showToast(msg: 'Profile Picture Uploaded');
     } catch (e) {
       Fluttertoast.showToast(msg: 'Cancelled');
