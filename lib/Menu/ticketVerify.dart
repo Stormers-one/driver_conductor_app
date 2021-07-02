@@ -147,10 +147,46 @@ class _TicketDisplayState extends State<TicketDisplay> {
                                 if (snapshot.hasData) {
                                   print(snapshot.data);
                                   if (snapshot.data.toString() == "true") {
-                                    return Image.asset(
-                                        'assets/images/verified.png');
+                                    return Column(
+                                      children: [
+                                        SizedBox(
+                                          height: MediaQuery.of(context)
+                                                  .size
+                                                  .width /
+                                              2,
+                                          child: Image.asset(
+                                              'assets/images/verified.png'),
+                                        ),
+                                        Text(
+                                          "Verified",
+                                          style: TextStyle(
+                                              fontSize: MediaQuery.of(context)
+                                                      .size
+                                                      .width /
+                                                  20),
+                                        ),
+                                      ],
+                                    );
                                   } else {
-                                    return Image.asset('assets/images/not.png');
+                                    return Column(
+                                      children: [
+                                        SizedBox(
+                                            height: MediaQuery.of(context)
+                                                    .size
+                                                    .width /
+                                                2,
+                                            child: Image.asset(
+                                                'assets/images/not.png')),
+                                        Text(
+                                          "Not Verified",
+                                          style: TextStyle(
+                                              fontSize: MediaQuery.of(context)
+                                                      .size
+                                                      .width /
+                                                  20),
+                                        ),
+                                      ],
+                                    );
                                   }
                                 }
                                 return Loading();
